@@ -1,4 +1,2 @@
 db.sqlite3
 bibliotecaapp/__pycache__/*
-/apps/categories/__pycache__/*
-/apps/categories/migrations/*
