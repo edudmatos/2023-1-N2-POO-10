@@ -1,0 +1,75 @@
+@startuml
+
+class Biblioteca {
+  - nome: String
+  - endereco: String
+  - livros: Livro
+  - usuarios: Usuario
+  + adicionarLivro(livro: Livro)
+  + removerLivro(livro: Livro)
+  + buscarLivroPorTitulo(titulo: String)
+  + buscarLivroPorAutor(autor: String)
+  + listarLivrosDisponiveis(): 
+  + adicionarUsuario(usuario: Usuario)
+  + removerUsuario(usuario: Usuario)
+}
+
+class Livro {
+  - titulo: String
+  - autor: String
+  - isbn: String
+  - disponivel: boolean
+  + emprestar()
+  + devolver()
+}
+
+class Usuario {
+  - nome: String
+  - endereco: String
+  - livrosEmprestados: Livro
+  + emprestarLivro(livro: Livro)
+  + devolverLivro(livro: Livro)
+  + listarLivrosEmprestados()
+}
+
+class Autor {
+  - nome: String
+  - nacionalidade: String
+  - livrosPublicados: Livro
+  + adicionarLivroPublicado(livro: Livro)
+  + removerLivroPublicado(livro: Livro)
+  + listarLivrosPublicados()
+}
+
+class Editora {
+  - nome: String
+  - endereco: String
+  - livrosPublicados Livro
+  + adicionarLivroPublicado(livro: Livro)
+  + removerLivroPublicado(livro: Livro)
+  + listarLivrosPublicados()
+}
+
+class Emprestimo {
+  - livro: Livro
+  - usuario: Usuario
+  - dataEmprestimo: Date
+  - dataDevolucao: Date
+}
+
+class Reserva {
+  - livro: Livro
+  - usuario: Usuario
+  - dataReserva: Date
+}
+
+Biblioteca "1" -- "0.." Livro
+Biblioteca "1" -- "0.." Usuario
+Livro "1" -- "0..1" Autor
+Livro "1" -- "0..1" Editora
+Livro "1" -- "0.." Emprestimo
+Livro "1" -- "0.." Reserva
+Usuario "1" -- "0.." Emprestimo
+Usuario "1" -- "0.." Reserva
+
+@enduml
