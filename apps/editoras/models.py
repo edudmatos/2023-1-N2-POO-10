@@ -2,7 +2,7 @@ from django.db import models
 
 class Editora(models.Model):
     nome = models.CharField('Nome', max_length=50)
-    endereco = models.TextField('Endereço', max_length=100)
+    endereco = models.CharField('Endereço', max_length=200)
     livros_publicados = models.ManyToManyField('Livro', verbose_name='Livros Publicados')
 
     class Meta:
