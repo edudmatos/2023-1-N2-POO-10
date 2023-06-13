@@ -1,32 +1,17 @@
 from django.db import models
 
-class Editora:
-    def _init_(self, nome, endereco):
-        self._nome = nome
-        self._endereco = endereco
-        self._livros_publicados = []
+class Editora(models.Model):
+    nome = models.CharField('Nome', max_length=50)
+    endereco = models.TextField('Endereço', max_length=100)
+    livros_publicados = models.ManyToManyField('Livro', verbose_name='Livros Publicados')
 
-    def get_nome(self):
-        return self._nome
+    class Meta:
+        verbose_name = 'Editora'
+        verbose_name_plural = 'Editoras'
+        ordering = ['id']
 
-    def set_nome(self, nome):
-        self._nome = nome
-
-    def get_endereco(self):
-        return self._endereco
-
-    def set_endereco(self, endereco):
-        self._endereco = endereco
-
-    def adicionar_livro_publicado(self, livro):
-        self._livros_publicados.append(livro)
-
-    def remover_livro_publicado(self, livro):
-        self._livros_publicados.remove(livro)
-
-    def listar_livros_publicados(self):
-        for livro in self._livros_publicados:
-            print(livro)
+    def __str__(self):
+        return self.nome
             
     
     
