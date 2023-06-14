@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'autor.apps.AutorConfig',
+    'editoras.apps.editorasConfig',
+    'emprestimos.apps.emprestimosConfig',
 ]
 
 MIDDLEWARE = [
